@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    scrollbar-width: thin;
 }
 
 a{text-decoration: none;}
@@ -10,6 +11,7 @@ a{text-decoration: none;}
 p{
     line-height: 30px;
 }
+
 body{
     background-color: #f5f5f5;
 }
@@ -24,7 +26,7 @@ body{
     grid-template-areas:
     "nav nav nav nav nav"
     "dashboard main main main sidemenu"
-    "footer footer footer footer footer";
+    "footer footer footer footer sidemenu";
     height: 100vh;
     width: 100%;
 }
@@ -44,29 +46,31 @@ nav h1{
     display: flex;
     margin: 0 20px;
     font-size: 36px;
-    background: linear-gradient(to right, blue, red, orangered);
+    background: linear-gradient(to right, blue, darkblue, orangered);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.search{
+.search-nav{
     display: flex;
     width: fit-content;
-    border: 1.5px solid rgb(248, 128, 85);
+    border: 1.5px solid rgb(32, 62, 214);
     border-radius: 30px;
     overflow: hidden;
     margin: 0 auto;
     align-items: center;
 }
 
-.search form{
+.search-nav form{
     width: 100%;
     height: 100%;
     display: flex;
 }
 
-.search input{
+.search-nav input{
     border: none;
     outline: none;
-    width: 250px;
+    max-width: 250px;
     padding: 0 20px;
     overflow: hidden;
 }
@@ -74,12 +78,10 @@ nav h1{
 .search-icon{
     display: flex;
     padding: 0 4px;
-    background-color: orangered;
+    background-color: rgb(32, 62, 214);
 }
 
 .search-icon box-icon{
-    width: 30px;
-    height: 30px;
     fill: white;
 }
 
@@ -102,21 +104,23 @@ nav li a{
     column-gap: 8px;
     padding: 8px 16px;
     border-radius: 50px;
-    color: orangered;
-    fill: orangered;
+    color: rgb(32, 62, 214);
+    fill: rgb(32, 62, 214);
     font-size: 18px;
     font-weight: 500;
     transition: 1s;
 }
 
 nav li a:hover{
-    background-color: orangered;
+    background-color: rgb(32, 62, 214);
     color: white;
     fill: white;
 }
 
-#active{
-    background-color: orangered;
+.active,
+nav li a:hover,
+.dashboard li a:hover{
+    background-color: rgb(32, 62, 214);
     color: white;
     fill: white;
 }
@@ -131,6 +135,40 @@ nav li a:hover{
     flex-direction: column;
     background-color: rgba(255, 255, 255, 0.76);
     width: fit-content;
+}
+
+.search-dash{
+    display: flex;
+    width: 80%;
+    border: 1.5px solid #a1a1a1;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.search-dash form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.search-dash input{
+    border: none;
+    outline: none;
+    max-width: 85%;
+    padding: 0 10px;
+    overflow: hidden;
+}
+
+.search-dash .search-icon{
+    display: flex;
+    padding: 2px;
+    background-color: #f5f5f5;
+}
+
+.search-dash .search-icon box-icon{
+    fill: grey;
 }
 
 .dashboard ul{
@@ -148,16 +186,16 @@ nav li a:hover{
     height: fit-content;
     align-items: center;
     justify-content: flex-start;
-    column-gap: 8px;
     width: 100%;
-    padding: 16px;
-    border-radius: 8px;
-    color: orangered;
-    fill: orangered;
+    padding: 8px 16px;
+    border-radius: 0 8px 8px 0;
+    color: rgb(32, 62, 214);
+    fill: rgb(32, 62, 214);
     background-color: white;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
-    transition: 1s;
+    transition: 0.3s;
+    column-gap: 20px;
 }
 
 
@@ -175,7 +213,45 @@ main{
     grid-area: sidemenu;
     display: flex;
     flex-direction: column;
-    background-color: antiquewhite;
+    background-color: lightblue;
+    justify-content: center;
+    padding: 20px 0;
+
+}
+
+.userprofile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.userimg{
+    clip-path: circle();
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.status{
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    column-gap: 8px;
+    flex-wrap: nowrap;
+}
+
+.status span{
+    content: '';
+    width: 8px;
+    height: 8px;
+    clip-path: circle();
+    background: green;
+}
+
+.status p{
+    padding-bottom: 2px;
 }
 
 
